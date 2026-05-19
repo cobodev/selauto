@@ -1,0 +1,27 @@
+---
+import HeroBadge from "./HeroBadge.astro";
+import PhoneButton from "./ui/PhoneButton.astro";
+import OutlineButton from "./ui/OutlineButton.astro";
+---
+
+<section id="top" class="relative flex min-h-screen items-end overflow-hidden">
+  <img src="/assets/hero-tow-truck.jpg" alt="Grúa Selauto en carretera durante la noche" class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent"></div>
+  <div class="site-container relative mx-auto max-w-7xl px-6 pb-24 pt-40 w-full">
+    <div class="max-w-3xl">
+      <HeroBadge />
+      <h1 class="mt-6 font-display text-5xl font-black uppercase leading-[0.9] text-foreground sm:text-7xl lg:text-8xl">
+        Asistencia<br />en carretera.<br />
+        <span class="text-accent-yellow">SEL</span>AUTO<span class="text-accent-yellow">.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-muted-foreground">
+        Grúa local, rápida y profesional. Te sacamos del apuro a cualquier hora, en cualquier punto.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <PhoneButton />
+        <OutlineButton href="#servicios" label="Nuestros servicios" />
+      </div>
+    </div>
+  </div>
+</section>

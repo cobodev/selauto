@@ -1,0 +1,22 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Grúas Selauto · Asistencia en carretera 24h",
+  description = "Grúas Selauto: servicio de grúa y asistencia en carretera 24/7. Rápidos, profesionales y locales."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Grúas Selauto" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

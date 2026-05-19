@@ -1,0 +1,39 @@
+---
+import { MapPin, Phone } from "lucide-astro";
+import ContactForm from "./ContactForm.astro";
+import { phone } from "../data/site";
+---
+
+<section id="contacto" class="section-shell bg-accent-yellow text-accent-foreground">
+  <div class="site-container grid gap-12 lg:grid-cols-2 lg:items-start">
+    <div>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] opacity-70">¿Una avería?</p>
+      <h2 class="font-display text-5xl font-black uppercase leading-none md:text-7xl">
+        Llámanos.<br />Estamos en camino.
+      </h2>
+
+      <div class="mt-10 space-y-6">
+        <a
+          href={phone.href}
+          class="flex items-center gap-4 rounded-md bg-background px-6 py-6 text-foreground transition hover:brightness-110"
+        >
+          <Phone class="size-8 text-accent-yellow" aria-hidden="true" />
+          <div>
+            <div class="text-xs uppercase tracking-widest text-muted-foreground">Teléfono 24h</div>
+            <div class="font-display text-3xl font-bold">{phone.label}</div>
+          </div>
+        </a>
+
+        <div class="flex items-start gap-4 px-6">
+          <MapPin class="mt-1 size-6" aria-hidden="true" />
+          <div>
+            <div class="text-xs uppercase tracking-widest opacity-70">Base</div>
+            <div class="font-semibold">Polígono Industrial, Nave 12 · Tu ciudad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ContactForm />
+  </div>
+</section>

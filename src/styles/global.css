@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.625rem;
+  --background-oklch: 8% 0 0;
+  --foreground-oklch: 98% 0 0;
+  --card-oklch: 12% 0 0;
+  --secondary-oklch: 18% 0 0;
+  --muted-foreground-oklch: 65% 0 0;
+  --border-oklch: 22% 0 0;
+  --accent-yellow-oklch: 86% 0.18 95;
+  --accent-foreground-oklch: 10% 0 0;
+  --background: oklch(var(--background-oklch));
+  --foreground: oklch(var(--foreground-oklch));
+  --card: oklch(var(--card-oklch));
+  --card-foreground: oklch(var(--foreground-oklch));
+  --secondary: oklch(var(--secondary-oklch));
+  --secondary-foreground: oklch(var(--foreground-oklch));
+  --muted: oklch(var(--secondary-oklch));
+  --muted-foreground: oklch(var(--muted-foreground-oklch));
+  --border: oklch(var(--border-oklch));
+  --input: oklch(var(--border-oklch));
+  --ring: oklch(var(--accent-yellow-oklch));
+  --accent-yellow: oklch(var(--accent-yellow-oklch));
+  --accent-foreground: oklch(var(--accent-foreground-oklch));
+  --space-unit: 0.25rem;
+  --container-max: 80rem;
+  --container-gutter: 1.5rem;
+  --header-height: 4rem;
+  --section-y: 5.5rem;
+  --section-y-lg: 7rem;
+  --hero-pt: 10rem;
+  --hero-pb: 6rem;
+  --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent-yellow) 35%, transparent);
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, sans-serif;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 0;
+  box-shadow: var(--focus-ring);
+}
+
+::selection {
+  background: var(--accent-yellow);
+  color: var(--accent-foreground);
+}
+
+.site-container {
+  width: min(100% - calc(var(--container-gutter) * 2), var(--container-max));
+  margin-inline: auto;
+}
+
+.section-shell {
+  padding-block: var(--section-y);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --container-gutter: 1.5rem;
+    --section-y: 6rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --container-gutter: 1.5rem;
+    --section-y: var(--section-y-lg);
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --hero-pt: 10rem;
+    --hero-pb: 6rem;
+  }
+}
+
+@media (max-width: 39.999rem) {
+  :root {
+    --container-gutter: 1rem;
+    --section-y: 4.5rem;
+    --hero-pt: 8rem;
+    --hero-pb: 4rem;
+  }
+}

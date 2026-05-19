@@ -1,0 +1,13 @@
+---
+import { Truck } from "lucide-astro";
+
+const { title, description } = Astro.props;
+---
+
+<article class="group relative border border-border bg-card p-8 rounded-md hover:border-accent-yellow transition-colors">
+  <div class="mb-12 inline-flex size-16 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground">
+    <Truck class="size-7" aria-hidden="true" />
+  </div>
+  <h3 class="font-display text-3xl font-black uppercase text-foreground">{title}</h3>
+  <p class="mt-4 leading-relaxed text-muted-foreground">{description}</p>
+</article>

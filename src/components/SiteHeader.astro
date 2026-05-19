@@ -1,0 +1,15 @@
+---
+import BrandLogo from "./BrandLogo.astro";
+import PhoneButton from "./ui/PhoneButton.astro";
+import { navItems } from "../data/site";
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+  <div class="site-container flex h-16 items-center justify-between">
+    <BrandLogo />
+    <nav class="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex" aria-label="Principal">
+      {navItems.map((item) => <a class="hover:text-foreground transition-colors" href={item.href}>{item.label}</a>)}
+    </nav>
+    <PhoneButton compact />
+  </div>
+</header>

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+docs/
+reference/
+.astro/
+.pnpm-store/
+.DS_Store
+.agents
+npm-debug.log*
+pnpm-debug.log*

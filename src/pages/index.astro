@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import HeroSection from "../components/HeroSection.astro";
+import FeatureStrip from "../components/FeatureStrip.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import ZoneSection from "../components/ZoneSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<BaseLayout>
+  <main class="bg-background text-foreground">
+    <SiteHeader />
+    <HeroSection />
+    <FeatureStrip />
+    <ServicesSection />
+    <AboutSection />
+    <ZoneSection />
+    <ContactSection />
+    <SiteFooter />
+  </main>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import { Phone } from "lucide-astro";
+import { phone } from "../../data/site";
+
+const { compact = false } = Astro.props;
+---
+
+<a
+  href={phone.href}
+  class:list={[
+    "inline-flex items-center gap-2 rounded-md bg-accent-yellow font-bold text-accent-foreground transition hover:brightness-95",
+    compact ? "px-4 py-2 text-sm" : "px-6 py-4"
+  ]}
+>
+  <Phone class:list={[compact ? "size-4" : "size-5"]} aria-hidden="true" />
+  <span class={compact ? "hidden sm:inline" : ""}>{compact ? "Llamar 24h" : phone.label}</span>
+</a>
