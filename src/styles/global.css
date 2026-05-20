@@ -4,6 +4,7 @@
 
 :root {
   --radius: 0.625rem;
+  color-scheme: dark;
   --background-oklch: 8% 0 0;
   --foreground-oklch: 98% 0 0;
   --card-oklch: 12% 0 0;
@@ -11,6 +12,7 @@
   --muted-foreground-oklch: 65% 0 0;
   --border-oklch: 22% 0 0;
   --accent-yellow-oklch: 86% 0.18 95;
+  --accent-yellow-text-oklch: 86% 0.18 95;
   --accent-foreground-oklch: 10% 0 0;
   --background: oklch(var(--background-oklch));
   --foreground: oklch(var(--foreground-oklch));
@@ -24,6 +26,7 @@
   --input: oklch(var(--border-oklch));
   --ring: oklch(var(--accent-yellow-oklch));
   --accent-yellow: oklch(var(--accent-yellow-oklch));
+  --accent-yellow-text: oklch(var(--accent-yellow-text-oklch));
   --accent-foreground: oklch(var(--accent-foreground-oklch));
   --space-unit: 0.25rem;
   --container-max: 80rem;
@@ -34,6 +37,20 @@
   --hero-pt: 10rem;
   --hero-pb: 6rem;
   --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent-yellow) 35%, transparent);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --background-oklch: 94% 0.012 92;
+  --foreground-oklch: 15% 0.012 92;
+  --card-oklch: 98% 0.006 92;
+  --secondary-oklch: 88% 0.014 92;
+  --muted-foreground-oklch: 31% 0.012 92;
+  --border-oklch: 62% 0.016 92;
+  --accent-yellow-oklch: 58% 0.14 86;
+  --accent-yellow-text-oklch: 52% 0.14 86;
+  --accent-foreground-oklch: 0% 0 0;
+  --focus-ring: 0 0 0 2px var(--background), 0 0 0 5px color-mix(in oklab, var(--accent-yellow) 78%, black 10%);
 }
 
 html {
@@ -94,6 +111,76 @@ select {
 
 .text-balance {
   text-wrap: balance;
+}
+
+[data-theme="light"] .text-accent-yellow {
+  color: var(--accent-yellow-text);
+}
+
+[data-theme="light"] .service-card {
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--border) 42%, transparent);
+}
+
+[data-theme="light"] .service-card:hover {
+  background: color-mix(in oklab, var(--card) 76%, var(--accent-yellow) 8%);
+  border-color: var(--accent-yellow-text);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--accent-yellow-text) 45%, transparent),
+    0 16px 34px color-mix(in oklab, var(--foreground) 12%, transparent);
+}
+
+.theme-image {
+  transition: opacity 320ms ease;
+}
+
+.theme-image-day {
+  opacity: 0;
+}
+
+#top {
+  --hero-surface: color-mix(in oklab, var(--background) 84%, transparent);
+  --hero-edge: color-mix(in oklab, var(--background) 52%, transparent);
+  --hero-fade: color-mix(in oklab, var(--background) 16%, transparent);
+}
+
+[data-theme="light"] #top {
+  --hero-surface: color-mix(in oklab, var(--background) 82%, white 4%);
+  --hero-edge: color-mix(in oklab, var(--background) 56%, transparent);
+  --hero-fade: color-mix(in oklab, var(--background) 12%, transparent);
+}
+
+.hero-overlay-vertical {
+  background: linear-gradient(to top, var(--hero-surface), var(--hero-edge), var(--hero-fade));
+}
+
+.hero-overlay-horizontal {
+  background: linear-gradient(to right, var(--hero-surface), var(--hero-edge), transparent);
+}
+
+[data-theme="light"] .theme-image-night {
+  opacity: 0;
+}
+
+[data-theme="light"] .theme-image-day {
+  opacity: 1;
+}
+
+.theme-toggle [data-theme-icon="sun"],
+.theme-toggle [data-theme-label="light"],
+.theme-toggle [data-theme-state="light"] {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle [data-theme-icon="moon"],
+[data-theme="light"] .theme-toggle [data-theme-label="dark"],
+[data-theme="light"] .theme-toggle [data-theme-state="dark"] {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle [data-theme-icon="sun"],
+[data-theme="light"] .theme-toggle [data-theme-label="light"],
+[data-theme="light"] .theme-toggle [data-theme-state="light"] {
+  display: inline;
 }
 
 @media (min-width: 40rem) {

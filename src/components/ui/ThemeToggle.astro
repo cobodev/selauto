@@ -1,0 +1,69 @@
+---
+import { Moon, Sun } from "lucide-astro";
+---
+
+<button
+  type="button"
+  class="theme-toggle inline-flex min-h-10 w-[2.875rem] items-center justify-center gap-2 rounded-md border border-border bg-card/80 px-3 py-2 text-xs font-bold uppercase tracking-widest text-foreground transition hover:border-accent-yellow/70 hover:bg-muted sm:w-[4.875rem] lg:w-[7.25rem]"
+  data-theme-toggle
+  aria-label="Cambiar a modo claro. Servicio día y noche 24 horas"
+  aria-pressed="false"
+>
+  <span class="inline-flex size-5 items-center justify-center text-accent-yellow" aria-hidden="true">
+    <Moon data-theme-icon="moon" class="size-4" />
+    <Sun data-theme-icon="sun" class="size-4" />
+  </span>
+  <span class="hidden sm:inline shrink-0">24h</span>
+  <span class="sr-only">
+    <span data-theme-label="dark">Cambiar a modo claro</span>
+    <span data-theme-label="light">Cambiar a modo oscuro</span>
+  </span>
+</button>
+
+<script>
+  const storageKey = "selauto-theme";
+  const toggles = document.querySelectorAll("[data-theme-toggle]");
+
+  const getStoredTheme = () => {
+    try {
+      return localStorage.getItem(storageKey);
+    } catch {
+      return null;
+    }
+  };
+
+  const setStoredTheme = (theme: string) => {
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {
+      // Theme switching still works when storage is unavailable.
+    }
+  };
+
+  const applyTheme = (theme: string | null) => {
+    const nextTheme = theme === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+
+    toggles.forEach((toggle) => {
+      const isLight = nextTheme === "light";
+      toggle.setAttribute("aria-pressed", String(isLight));
+      toggle.setAttribute(
+        "aria-label",
+        isLight
+          ? "Cambiar a modo oscuro. Servicio día y noche 24 horas"
+          : "Cambiar a modo claro. Servicio día y noche 24 horas"
+      );
+    });
+  };
+
+  applyTheme(getStoredTheme());
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+      const nextTheme = currentTheme === "light" ? "dark" : "light";
+      applyTheme(nextTheme);
+      setStoredTheme(nextTheme);
+    });
+  });
+</script>

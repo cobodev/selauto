@@ -12,7 +12,7 @@ import { services } from "../data/site";
       description="Más de una década dando servicio en carretera con flota propia y personal cualificado."
     />
     <div class="mt-16 grid gap-6 md:grid-cols-3">
-      {services.map((service) => <ServiceCard title={service.title} description={service.description} />)}
+      {services.map((service) => <ServiceCard title={service.title} description={service.description} icon={service.icon} />)}
     </div>
   </div>
 </section>

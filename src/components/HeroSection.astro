@@ -5,15 +5,25 @@ import OutlineButton from "./ui/OutlineButton.astro";
 ---
 
 <section id="top" class="relative flex min-h-screen items-end overflow-hidden">
-  <img src="/assets/hero-tow-truck.jpg" alt="Grúa Selauto en carretera durante la noche" class="absolute inset-0 h-full w-full object-cover" />
-  <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent"></div>
+  <img
+    src="/assets/hero-grua-noche.png"
+    alt="Grúa Selauto de asistencia en carretera"
+    class="theme-image theme-image-night absolute inset-0 h-full w-full object-cover"
+  />
+  <img
+    src="/assets/hero-grua-dia.png"
+    alt=""
+    class="theme-image theme-image-day absolute inset-0 h-full w-full object-cover"
+    aria-hidden="true"
+  />
+  <div class="hero-overlay-vertical absolute inset-0"></div>
+  <div class="hero-overlay-horizontal absolute inset-0"></div>
   <div class="site-container relative mx-auto max-w-7xl px-6 pb-24 pt-40 w-full">
     <div class="max-w-3xl">
       <HeroBadge />
       <h1 class="mt-6 font-display text-5xl font-black uppercase leading-[0.9] text-foreground sm:text-7xl lg:text-8xl">
         Asistencia<br />en carretera.<br />
-        <span class="text-accent-yellow">SEL</span>AUTO<span class="text-accent-yellow">.</span>
+        <span class="italic"><span class="text-accent-yellow">SEL</span>AUTO<span class="text-accent-yellow">.</span></span>
       </h1>
       <p class="mt-6 max-w-xl text-lg text-muted-foreground">
         Grúa local, rápida y profesional. Te sacamos del apuro a cualquier hora, en cualquier punto.

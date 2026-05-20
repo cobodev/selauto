@@ -3,17 +3,39 @@ import "../styles/global.css";
 
 const {
   title = "Grúas Selauto · Asistencia en carretera 24h",
-  description = "Grúas Selauto: servicio de grúa y asistencia en carretera 24/7. Rápidos, profesionales y locales."
+  description = "Grúas Selauto: servicio de grúa y asistencia en carretera 24/7. Rápidos, profesionales y locales.",
+  canonical
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      (() => {
+        try {
+          const theme = localStorage.getItem("selauto-theme");
+          document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="author" content="Grúas Selauto" />
+    <meta name="geo.region" content="ES-CB" />
+    <meta name="geo.placename" content="Cantabria" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
     <title>{title}</title>
   </head>
   <body>

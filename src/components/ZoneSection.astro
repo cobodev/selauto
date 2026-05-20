@@ -1,14 +1,50 @@
 ---
+import { Building2, MapPinned, Mountain, Route } from "lucide-astro";
 import SectionHeader from "./SectionHeader.astro";
+import { coverageZones } from "../data/site";
+
+const contextIcons = [Mountain, Route, Building2];
 ---
 
-<section id="zona" class="section-shell">
+<section id="zona" class="section-shell border-y border-border bg-muted/30">
   <div class="site-container">
     <SectionHeader
-      centered
       eyebrow="Zona de actuación"
-      title="Donde nos necesites."
-      description="Cubrimos toda la comarca y carreteras principales con tiempos de respuesta reducidos. Si tienes dudas sobre cobertura, llámanos."
+      title="Valles Pasiegos y Cantabria."
+      description="Grúa y asistencia en carretera en Valles Pasiegos, Selaya, Sarón, Torrelavega y el resto de Cantabria, con conocimiento local de carreteras de valle, montaña y ciudad."
     />
+
+    <div class="mt-16 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+      <article class="relative overflow-hidden rounded-md border border-accent-yellow/40 bg-card p-8 [background-image:linear-gradient(135deg,transparent_0%,transparent_58%,color-mix(in_oklab,var(--accent-yellow)_10%,transparent)_100%)] md:p-10">
+        <div class="relative">
+          <div class="inline-flex items-center gap-3 rounded-md bg-accent-yellow px-4 py-3 text-accent-foreground">
+            <MapPinned class="size-5" aria-hidden="true" />
+            <span class="font-display text-xs font-black uppercase tracking-[0.22em]">{coverageZones.primary.label}</span>
+          </div>
+          <h3 class="mt-8 font-display text-5xl font-black uppercase leading-none text-foreground md:text-7xl">
+            {coverageZones.primary.title}
+          </h3>
+          <p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">{coverageZones.primary.description}</p>
+        </div>
+      </article>
+
+      <aside class="rounded-md border border-border bg-card p-8 md:p-10">
+        <p class="font-display text-sm font-semibold uppercase tracking-[0.35em] text-accent-yellow">Localidades habituales</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {coverageZones.places.map((place, index) => (
+            <span
+              class:list={[
+                "max-w-full rounded-md border px-4 py-3 font-display text-xs font-black uppercase leading-tight tracking-[0.16em] sm:text-sm sm:tracking-widest",
+                index < 3
+                  ? "border-accent-yellow bg-accent-yellow text-accent-foreground"
+                  : "border-border bg-background text-foreground"
+              ]}
+            >
+              {place}
+            </span>
+          ))}
+        </div>
+      </aside>
+    </div>
   </div>
 </section>

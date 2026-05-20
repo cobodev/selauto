@@ -1,12 +1,24 @@
 ---
-import { Truck } from "lucide-astro";
+import { BatteryCharging, Clock, Disc3, Route, ShieldAlert, Truck, Wrench } from "lucide-astro";
 
-const { title, description } = Astro.props;
+const { title, description, icon = "truck" } = Astro.props;
+
+const icons = {
+  "battery-charging": BatteryCharging,
+  clock: Clock,
+  disc: Disc3,
+  route: Route,
+  "shield-alert": ShieldAlert,
+  truck: Truck,
+  wrench: Wrench
+};
+
+const Icon = icons[icon] ?? Truck;
 ---
 
-<article class="group relative border border-border bg-card p-8 rounded-md hover:border-accent-yellow transition-colors">
+<article class="service-card group relative border border-border bg-card p-8 rounded-md transition-colors hover:border-accent-yellow">
   <div class="mb-12 inline-flex size-16 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground">
-    <Truck class="size-7" aria-hidden="true" />
+    <Icon class="size-7" aria-hidden="true" />
   </div>
   <h3 class="font-display text-3xl font-black uppercase text-foreground">{title}</h3>
   <p class="mt-4 leading-relaxed text-muted-foreground">{description}</p>

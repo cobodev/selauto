@@ -8,9 +8,10 @@ import AboutSection from "../components/AboutSection.astro";
 import ZoneSection from "../components/ZoneSection.astro";
 import ContactSection from "../components/ContactSection.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import { siteMetadata } from "../data/site";
 ---
 
-<BaseLayout>
+<BaseLayout title={siteMetadata.title} description={siteMetadata.description}>
   <main class="bg-background text-foreground">
     <SiteHeader />
     <HeroSection />
