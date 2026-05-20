@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ServiceDetailCard from "../components/ServiceDetailCard.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import PhoneButton from "../components/ui/PhoneButton.astro";
+import { serviceDetails } from "../data/services";
+
+const pageTitle = "Grúas Selauto | Servicios de grúa 24h y asistencia en carretera";
+const pageDescription =
+  "Servicios de grúa 24h, asistencia en carretera, rescate, baterías, pinchazos y traslado de vehículos en Cantabria.";
+
+const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Servicios de grúa y asistencia en carretera",
+  description: pageDescription,
+  provider: {
+    "@type": "LocalBusiness",
+    name: "Grúas Selauto",
+    areaServed: ["Valles Pasiegos", "Cantabria"]
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios de Grúas Selauto",
+    itemListElement: serviceDetails.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description
+      }
+    }))
+  }
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  structuredData={serviceStructuredData}
+>
+  <main class="bg-background text-foreground">
+    <SiteHeader />
+    <section class="section-shell">
+      <div class="site-container">
+        <SectionHeader
+          eyebrow="Qué hacemos"
+          title="Soluciones para volver a moverte."
+          description="Desde una avería sencilla hasta un traslado coordinado, cada servicio está pensado para actuar con rapidez y mantenerte informado durante la asistencia."
+        />
+
+        <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {
+            serviceDetails.map((service) => (
+              <ServiceDetailCard
+                title={service.title}
+                description={service.description}
+                detail={service.detail}
+                highlights={service.highlights}
+                icon={service.icon}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell border-y border-border bg-muted/30">
+      <div class="site-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <div>
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-yellow">Cómo trabajamos</p>
+          <h2 class="font-display text-4xl font-black uppercase leading-none text-foreground md:text-6xl">
+            Atención clara desde el primer aviso.
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-muted-foreground">
+            Recogemos la información necesaria, valoramos la incidencia y coordinamos la asistencia o el traslado adecuado.
+          </p>
+          <div class="mt-8">
+            <PhoneButton />
+          </div>
+        </div>
+
+        <div class="grid gap-4">
+          {
+            [
+              ["01", "Localización", "Confirmamos dónde está el vehículo y qué tipo de incidencia se ha producido."],
+              ["02", "Intervención", "Enviamos el recurso adecuado para asistencia, recogida, rescate o traslado."],
+              ["03", "Destino", "Coordinamos taller, domicilio, base o punto de entrega según la situación."]
+            ].map(([number, title, description]) => (
+              <article class="grid gap-4 rounded-md border border-border bg-card p-6 sm:grid-cols-[4rem_1fr]">
+                <div class="font-display text-3xl font-black text-accent-yellow">{number}</div>
+                <div>
+                  <h3 class="font-display text-2xl font-black uppercase text-foreground">{title}</h3>
+                  <p class="mt-2 leading-relaxed text-muted-foreground">{description}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <SiteFooter />
+  </main>
+</BaseLayout>

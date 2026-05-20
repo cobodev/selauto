@@ -4,7 +4,8 @@ import "../styles/global.css";
 const {
   title = "Grúas Selauto · Asistencia en carretera 24h",
   description = "Grúas Selauto: servicio de grúa y asistencia en carretera 24/7. Rápidos, profesionales y locales.",
-  canonical
+  canonical,
+  structuredData
 } = Astro.props;
 ---
 
@@ -36,6 +37,7 @@ const {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
+    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
     <title>{title}</title>
   </head>
   <body>

@@ -1,7 +1,7 @@
 ---
 import { MapPin, Phone } from "lucide-astro";
 import ContactForm from "./ContactForm.astro";
-import { phone } from "../data/site";
+import { contact } from "../data/site";
 ---
 
 <section id="contacto" class="section-shell bg-accent-yellow text-accent-foreground">
@@ -14,13 +14,13 @@ import { phone } from "../data/site";
 
       <div class="mt-10 space-y-6">
         <a
-          href={phone.href}
+          href={contact.phone.href}
           class="flex items-center gap-4 rounded-md bg-background px-6 py-6 text-foreground transition hover:brightness-110"
         >
           <Phone class="size-8 text-accent-yellow" aria-hidden="true" />
           <div>
             <div class="text-xs uppercase tracking-widest text-muted-foreground">Teléfono 24h</div>
-            <div class="font-display text-3xl font-bold">{phone.label}</div>
+            <div class="font-display text-3xl font-bold">{contact.phone.label}</div>
           </div>
         </a>
 
@@ -28,7 +28,7 @@ import { phone } from "../data/site";
           <MapPin class="mt-1 size-6" aria-hidden="true" />
           <div>
             <div class="text-xs uppercase tracking-widest opacity-70">Base</div>
-            <div class="font-semibold">Polígono Industrial, Nave 12 · Tu ciudad</div>
+            <div class="font-semibold">{contact.address}</div>
           </div>
         </div>
       </div>

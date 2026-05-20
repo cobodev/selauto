@@ -1,6 +1,16 @@
+import { serviceDetails } from "./services";
+
 export const phone = {
   label: "+34 600 123 456",
   href: "tel:+34600123456"
+};
+
+export const contact = {
+  phone,
+  address: "Polígono Industrial, Nave 12 · Tu ciudad",
+  area: "Valles Pasiegos y Cantabria",
+  hours: "Atención 24 horas, todos los días",
+  response: "Asistencia urgente y avisos programados"
 };
 
 export const siteMetadata = {
@@ -10,10 +20,10 @@ export const siteMetadata = {
 };
 
 export const navItems = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Zona", href: "#zona" },
-  { label: "Contacto", href: "#contacto" }
+  { label: "Servicios", href: "/servicios" },
+  { label: "Flota", href: "/flota" },
+  { label: "Aseguradoras", href: "/aseguradoras" },
+  { label: "Contacto", href: "/contacto" }
 ];
 
 export const features = [
@@ -23,38 +33,7 @@ export const features = [
   { label: "Flota propia" }
 ];
 
-export const services = [
-  {
-    title: "Grúa 24 horas",
-    icon: "clock",
-    description: "Recogida y traslado de vehículos averiados o accidentados durante el día y la noche."
-  },
-  {
-    title: "Asistencia en carretera",
-    icon: "wrench",
-    description: "Averías resueltas in situ: baterías, ruedas, combustible."
-  },
-  {
-    title: "Traslado de vehículos",
-    icon: "route",
-    description: "Movemos turismos y vehículos ligeros entre talleres, domicilios, ITV o puntos de entrega."
-  },
-  {
-    title: "Rescate y retirada",
-    icon: "shield-alert",
-    description: "Apoyo cuando el vehículo queda fuera de la vía, bloqueado o en una zona de difícil acceso."
-  },
-  {
-    title: "Baterías y arranque",
-    icon: "battery-charging",
-    description: "Asistencia por fallo de batería, arranque y orientación para sustitución si procede."
-  },
-  {
-    title: "Pinchazos y ruedas",
-    icon: "disc",
-    description: "Ayuda con pinchazos, ruedas dañadas o incidencias que impiden continuar la marcha."
-  }
-];
+export const services = serviceDetails.map(({ title, icon, description }) => ({ title, icon, description }));
 
 export const stats = [
   { value: "25+", label: "Años de experiencia" },

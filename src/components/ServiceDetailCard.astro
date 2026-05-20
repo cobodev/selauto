@@ -1,0 +1,42 @@
+---
+import { BatteryCharging, Check, Clock, Disc3, Route, ShieldAlert, Truck, Wrench } from "lucide-astro";
+
+const { title, description, detail, highlights = [], icon = "truck" } = Astro.props;
+
+const icons = {
+  "battery-charging": BatteryCharging,
+  clock: Clock,
+  disc: Disc3,
+  route: Route,
+  "shield-alert": ShieldAlert,
+  truck: Truck,
+  wrench: Wrench
+};
+
+const Icon = icons[icon] ?? Truck;
+---
+
+<article class="service-card flex h-full flex-col rounded-md border border-border bg-card p-6 transition-colors hover:border-accent-yellow md:p-8">
+  <div class="mb-8 inline-flex size-14 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground md:size-16">
+    <Icon class="size-7" aria-hidden="true" />
+  </div>
+
+  <div class="flex flex-1 flex-col">
+    <h3 class="font-display text-2xl font-black uppercase leading-tight text-foreground md:text-3xl">{title}</h3>
+    <p class="mt-4 leading-relaxed text-muted-foreground">{description}</p>
+    <p class="mt-4 leading-relaxed text-muted-foreground">{detail}</p>
+
+    {
+      highlights.length > 0 && (
+        <ul class="mt-8 grid gap-3 border-t border-border pt-6">
+          {highlights.map((highlight) => (
+            <li class="flex items-start gap-3 text-sm font-medium text-foreground">
+              <Check class="mt-0.5 size-4 shrink-0 text-accent-yellow" aria-hidden="true" />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</article>
