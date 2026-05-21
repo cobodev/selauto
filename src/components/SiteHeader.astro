@@ -1,19 +1,134 @@
 ---
+import { Menu, X } from "lucide-astro";
 import BrandLogo from "./BrandLogo.astro";
 import PhoneButton from "./ui/PhoneButton.astro";
 import ThemeToggle from "./ui/ThemeToggle.astro";
 import { navItems } from "../data/site";
+
+const normalizePath = (path: string) => {
+  const cleanPath = path.split("?")[0].split("#")[0];
+  return cleanPath.length > 1 ? cleanPath.replace(/\/$/, "") : cleanPath;
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (href: string) => normalizePath(href) === currentPath;
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-  <div class="site-container flex h-16 items-center justify-between">
+<header class="fixed inset-x-0 top-0 z-[70] border-b border-border bg-background/80 backdrop-blur-md">
+  <div class="site-container relative z-[70] flex h-16 items-center justify-between">
     <BrandLogo />
     <nav class="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex" aria-label="Principal">
-      {navItems.map((item) => <a class="hover:text-foreground transition-colors" href={item.href}>{item.label}</a>)}
+      {
+        navItems.map((item) => (
+          <a
+            class:list={[
+              "transition-colors hover:text-foreground",
+              isActive(item.href) ? "text-foreground" : ""
+            ]}
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </nav>
     <div class="flex items-center gap-2">
       <ThemeToggle />
       <PhoneButton compact />
+      <button
+        type="button"
+        class="inline-flex min-h-10 w-11 items-center justify-center rounded-md border border-border bg-card/80 text-foreground transition hover:border-accent-yellow/70 hover:bg-muted md:hidden"
+        data-mobile-menu-toggle
+        aria-label="Abrir menú principal"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <Menu class="size-5" data-menu-icon="open" aria-hidden="true" />
+        <X class="hidden size-5" data-menu-icon="close" aria-hidden="true" />
+      </button>
     </div>
   </div>
+
 </header>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] hidden bg-background text-foreground md:hidden"
+  data-mobile-menu
+  aria-hidden="true"
+>
+  <div class="site-container flex min-h-screen flex-col justify-between pb-10 pt-28">
+    <nav class="grid gap-4" aria-label="Principal móvil">
+      {
+        navItems.map((item, index) => (
+          <a
+            class:list={[
+              "group rounded-md border p-5 transition hover:border-accent-yellow hover:bg-card",
+              isActive(item.href) ? "border-accent-yellow bg-accent-yellow text-accent-foreground" : "border-border bg-card text-foreground"
+            ]}
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            <span
+              class:list={[
+                "mb-4 block text-xs font-black uppercase tracking-[0.28em]",
+                isActive(item.href) ? "text-accent-foreground/70" : "text-accent-yellow"
+              ]}
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span class="font-display text-4xl font-black uppercase leading-none">{item.label}</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="mt-10 rounded-md border border-border bg-card p-5">
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Asistencia 24h</p>
+      <div class="mt-5">
+        <PhoneButton />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menu = document.querySelector("[data-mobile-menu]");
+  const toggle = document.querySelector("[data-mobile-menu-toggle]");
+  const openIcon = document.querySelector("[data-menu-icon='open']");
+  const closeIcon = document.querySelector("[data-menu-icon='close']");
+
+  const setMenuState = (isOpen: boolean) => {
+    if (!menu || !toggle || !openIcon || !closeIcon) return;
+
+    menu.classList.toggle("hidden", !isOpen);
+    menu.setAttribute("aria-hidden", String(!isOpen));
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Cerrar menú principal" : "Abrir menú principal");
+    openIcon.classList.toggle("hidden", isOpen);
+    closeIcon.classList.toggle("hidden", !isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  };
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    setMenuState(!isOpen);
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuState(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenuState(false);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 48rem)").matches) {
+      setMenuState(false);
+    }
+  });
+</script>
