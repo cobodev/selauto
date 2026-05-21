@@ -7,16 +7,21 @@ export const phone = {
 
 export const contact = {
   phone,
-  address: "Polígono Industrial, Nave 12 · Tu ciudad",
+  address: "Autovía A8, salida 214, nave 1, 39650 La Penilla De Cayón, Cantabria",
   area: "Valles Pasiegos y Cantabria",
   hours: "Atención 24 horas, todos los días",
-  response: "Asistencia urgente y avisos programados"
+  response: "Asistencia urgente y avisos programados",
+  location: {
+    lat: 43.313765,
+    lng: -3.878979
+  },
+  coverageRadiusKm: 35
 };
 
 export const siteMetadata = {
-  title: "Grúa 24h en Valles Pasiegos y Cantabria | Grúas Selauto",
+  title: "Grúas Selauto | Grúa 24h en Cantabria",
   description:
-    "Grúas Selauto ofrece asistencia en carretera y grúa 24h en Valles Pasiegos, Selaya, Sarón, Torrelavega y Cantabria. Servicio local y rápido."
+    "Grúas Selauto ofrece asistencia en carretera y grúa 24h en Cantabria. Servicio local y rápido."
 };
 
 export const navItems = [

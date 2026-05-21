@@ -154,7 +154,13 @@ select {
 }
 
 .hero-overlay-horizontal {
-  background: linear-gradient(to right, var(--hero-surface), var(--hero-edge), transparent);
+  background: linear-gradient(
+    to right,
+    var(--hero-surface) 0%,
+    var(--hero-edge) 34%,
+    color-mix(in oklab, var(--background) 8%, transparent) 58%,
+    transparent 78%
+  );
 }
 
 [data-theme="light"] .theme-image-night {
