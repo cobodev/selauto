@@ -27,7 +27,7 @@ export const siteMetadata = {
 export const navItems = [
   { label: "Servicios", href: "/servicios" },
   { label: "Flota", href: "/flota" },
-  { label: "Aseguradoras", href: "/aseguradoras" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Contacto", href: "/contacto" }
 ];
 
