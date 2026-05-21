@@ -16,9 +16,10 @@ const Tag = href ? "a" : "div";
 <Tag
   href={href}
   class:list={[
-    "group flex h-full gap-5 rounded-md border border-border bg-card p-6 transition",
+    "motion-reveal group flex h-full gap-5 rounded-md border border-border bg-card p-6 transition",
     href ? "hover:-translate-y-1 hover:border-accent-yellow" : ""
   ]}
+  data-motion="reveal"
 >
   <div class="inline-flex size-12 shrink-0 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground">
     <Icon class="size-6" aria-hidden="true" />

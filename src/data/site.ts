@@ -43,7 +43,7 @@ export const services = serviceDetails.map(({ title, icon, description }) => ({ 
 export const stats = [
   { value: "25+", label: "Años de experiencia" },
   { value: "24h", label: "Servicio continuo" },
-  { value: "100%", label: "Flota propia" },
+  { value: "365", label: "Todos los días del año" },
   { value: "5★", label: "Valoración media" }
 ];
 

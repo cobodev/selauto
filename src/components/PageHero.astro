@@ -5,13 +5,13 @@ const { eyebrow = "Página", title, description } = Astro.props;
 <section class="section-shell border-b border-border bg-background pt-32">
   <div class="site-container">
     <div class="max-w-3xl">
-      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-yellow">{eyebrow}</p>
-      <h1 class="font-display text-5xl font-black uppercase leading-none text-balance md:text-7xl">
+      <p class="motion-reveal mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-yellow" data-motion="reveal">{eyebrow}</p>
+      <h1 class="motion-reveal font-display text-5xl font-black uppercase leading-none text-balance md:text-7xl" data-motion="reveal" style="--motion-delay: 80ms">
         {title}
       </h1>
       {
         description && (
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+          <p class="motion-reveal mt-6 max-w-2xl text-lg leading-8 text-muted-foreground" data-motion="reveal" style="--motion-delay: 160ms">
             {description}
           </p>
         )

@@ -53,13 +53,14 @@ const serviceStructuredData = {
 
         <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {
-            serviceDetails.map((service) => (
+            serviceDetails.map((service, index) => (
               <ServiceDetailCard
                 title={service.title}
                 description={service.description}
                 detail={service.detail}
                 highlights={service.highlights}
                 icon={service.icon}
+                motionDelay={index * 70}
               />
             ))
           }
@@ -69,7 +70,7 @@ const serviceStructuredData = {
 
     <section class="section-shell border-y border-border bg-muted/30">
       <div class="site-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-        <div>
+        <div class="motion-reveal" data-motion="reveal">
           <p class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-yellow">Cómo trabajamos</p>
           <h2 class="font-display text-4xl font-black uppercase leading-none text-foreground md:text-6xl">
             Atención clara desde el primer aviso.
@@ -88,8 +89,8 @@ const serviceStructuredData = {
               ["01", "Localización", "Confirmamos dónde está el vehículo y qué tipo de incidencia se ha producido."],
               ["02", "Intervención", "Enviamos el recurso adecuado para asistencia, recogida, rescate o traslado."],
               ["03", "Destino", "Coordinamos taller, domicilio, base o punto de entrega según la situación."]
-            ].map(([number, title, description]) => (
-              <article class="grid gap-4 rounded-md border border-border bg-card p-6 sm:grid-cols-[4rem_1fr]">
+            ].map(([number, title, description], index) => (
+              <article class="motion-reveal grid gap-4 rounded-md border border-border bg-card p-6 sm:grid-cols-[4rem_1fr]" data-motion="reveal" style={`--motion-delay: ${index * 90}ms`}>
                 <div class="font-display text-3xl font-black text-accent-yellow">{number}</div>
                 <div>
                   <h3 class="font-display text-2xl font-black uppercase text-foreground">{title}</h3>

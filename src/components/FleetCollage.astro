@@ -13,10 +13,13 @@ const layoutClasses = {
     fleetVehicles.map((vehicle, index) => (
       <article
         class:list={[
+          "motion-reveal fleet-card",
           "group relative isolate overflow-hidden rounded-md border border-border bg-card",
           "transition duration-300 hover:-translate-y-1 hover:border-accent-yellow hover:shadow-[0_24px_60px_color-mix(in_oklab,var(--accent-yellow)_16%,transparent)]",
           layoutClasses[vehicle.layout] ?? "md:col-span-3"
         ]}
+        data-motion="reveal"
+        style={`--motion-delay: ${index * 80}ms`}
       >
         <img
           src={vehicle.image}

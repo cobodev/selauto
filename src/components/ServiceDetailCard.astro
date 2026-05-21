@@ -1,7 +1,7 @@
 ---
 import { BatteryCharging, Check, Clock, Disc3, Route, ShieldAlert, Truck, Wrench } from "lucide-astro";
 
-const { title, description, detail, highlights = [], icon = "truck" } = Astro.props;
+const { title, description, detail, highlights = [], icon = "truck", motionDelay = 0 } = Astro.props;
 
 const icons = {
   "battery-charging": BatteryCharging,
@@ -16,8 +16,12 @@ const icons = {
 const Icon = icons[icon] ?? Truck;
 ---
 
-<article class="service-card flex h-full flex-col rounded-md border border-border bg-card p-6 transition-colors hover:border-accent-yellow md:p-8">
-  <div class="mb-8 inline-flex size-14 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground md:size-16">
+<article
+  class="service-card motion-reveal flex h-full flex-col rounded-md border border-border bg-card p-6 transition-colors hover:border-accent-yellow md:p-8"
+  data-motion="reveal"
+  style={`--motion-delay: ${motionDelay}ms`}
+>
+  <div class="service-card-icon mb-8 inline-flex size-14 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground md:size-16">
     <Icon class="size-7" aria-hidden="true" />
   </div>
 

@@ -5,7 +5,7 @@ import { stats } from "../data/site";
 <div class="grid grid-cols-2 overflow-hidden rounded-lg border border-border">
   {stats.map((stat) => (
     <div class="border-border p-8 odd:border-r [&:nth-child(-n+2)]:border-b">
-      <div class="font-display text-6xl font-black text-accent-yellow">{stat.value}</div>
+      <div class="font-display text-6xl font-black text-accent-yellow" data-count-value={stat.value}>{stat.value}</div>
       <div class="mt-4 font-display text-sm uppercase tracking-widest text-muted-foreground">{stat.label}</div>
     </div>
   ))}

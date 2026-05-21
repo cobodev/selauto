@@ -133,6 +133,204 @@ select {
   transition: opacity 320ms ease;
 }
 
+.hero-parallax-media {
+  transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.06);
+  will-change: transform;
+}
+
+.hero-copy {
+  opacity: var(--hero-copy-opacity, 1);
+  transform: translate3d(0, var(--hero-copy-y, 0), 0);
+  will-change: opacity, transform;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+  transition:
+    opacity 620ms ease,
+    transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.brand-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+}
+
+.brand-reveal > span {
+  display: inline-block;
+  animation: brand-rise 860ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--brand-delay, 0ms);
+}
+
+.brand-reveal::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in oklab, var(--accent-yellow) 70%, white 20%) 46%,
+    transparent 68%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translateX(-125%) skewX(-14deg);
+  animation: brand-scan 980ms ease both;
+  animation-delay: calc(var(--brand-delay, 0ms) + 120ms);
+  pointer-events: none;
+}
+
+.brand-reveal-dot {
+  animation: brand-dot 780ms ease both;
+  animation-delay: 720ms;
+}
+
+.motion-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.motion-shine::after {
+  position: absolute;
+  inset-block: -40%;
+  left: -45%;
+  width: 28%;
+  content: "";
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, white 55%, transparent), transparent);
+  opacity: 0;
+  transform: skewX(-18deg);
+  transition:
+    left 680ms ease,
+    opacity 220ms ease;
+  pointer-events: none;
+}
+
+.motion-shine:hover::after,
+.motion-shine:focus-visible::after {
+  left: 118%;
+  opacity: 0.42;
+}
+
+.mobile-menu {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, -0.75rem, 0);
+  transition:
+    opacity 260ms ease,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-menu-panel {
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0);
+  transition:
+    opacity 260ms ease,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mobile-menu.is-open .mobile-menu-panel {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-menu-item {
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    opacity 300ms ease,
+    transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: 0ms, 0ms, var(--mobile-menu-delay, 0ms), var(--mobile-menu-delay, 0ms);
+}
+
+.mobile-menu.is-open .mobile-menu-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-menu.is-closing .mobile-menu-item,
+.mobile-menu.is-closing .mobile-menu-panel {
+  transition-delay: 0ms;
+}
+
+.service-card {
+  transform: translate3d(0, 0, 0);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.service-card:hover {
+  transform: translate3d(0, -0.25rem, 0);
+}
+
+.service-card-icon {
+  transition: transform 220ms ease;
+}
+
+.service-card:hover .service-card-icon {
+  transform: translate3d(0.15rem, -0.15rem, 0) rotate(-2deg);
+}
+
+@keyframes brand-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 105%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes brand-scan {
+  0% {
+    opacity: 0;
+    transform: translateX(-125%) skewX(-14deg);
+  }
+  32% {
+    opacity: 0.36;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(125%) skewX(-14deg);
+  }
+}
+
+@keyframes brand-dot {
+  0%,
+  52% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  68% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .theme-image-day {
   opacity: 0;
 }
@@ -210,5 +408,30 @@ select {
     --section-y: 4.5rem;
     --hero-pt: 8rem;
     --hero-pb: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-copy,
+  .hero-parallax-media {
+    transform: none;
   }
 }

@@ -48,12 +48,12 @@ const aboutStructuredData = {
       <div class="site-container">
         <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {
-            aboutPillars.map((pillar) => {
+            aboutPillars.map((pillar, index) => {
               const Icon = icons[pillar.icon as keyof typeof icons] ?? BadgeCheck;
 
               return (
-                <article class="rounded-md border border-border bg-card p-6 transition hover:border-accent-yellow md:p-8">
-                  <div class="mb-8 inline-flex size-14 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground">
+                <article class="service-card motion-reveal rounded-md border border-border bg-card p-6 transition hover:border-accent-yellow md:p-8" data-motion="reveal" style={`--motion-delay: ${index * 80}ms`}>
+                  <div class="service-card-icon mb-8 inline-flex size-14 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground">
                     <Icon class="size-7" aria-hidden="true" />
                   </div>
                   <h2 class="font-display text-2xl font-black uppercase leading-tight text-foreground">{pillar.title}</h2>
@@ -68,7 +68,7 @@ const aboutStructuredData = {
 
     <section class="section-shell">
       <div class="site-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-        <div>
+        <div class="motion-reveal" data-motion="reveal">
           <p class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-yellow">Forma de trabajar</p>
           <h2 class="font-display text-4xl font-black uppercase leading-none text-foreground md:text-6xl">
             Oficio, coordinación y trato directo.
@@ -85,7 +85,7 @@ const aboutStructuredData = {
         <div class="grid gap-4">
           {
             aboutTimeline.map((item, index) => (
-              <article class="grid gap-4 rounded-md border border-border bg-card p-6 sm:grid-cols-[4rem_1fr]">
+              <article class="motion-reveal grid gap-4 rounded-md border border-border bg-card p-6 sm:grid-cols-[4rem_1fr]" data-motion="reveal" style={`--motion-delay: ${index * 90}ms`}>
                 <div class="font-display text-3xl font-black text-accent-yellow">{String(index + 1).padStart(2, "0")}</div>
                 <div>
                   <h3 class="font-display text-2xl font-black uppercase text-foreground">{item.label}</h3>
@@ -100,13 +100,13 @@ const aboutStructuredData = {
 
     <section class="section-shell bg-accent-yellow text-accent-foreground">
       <div class="site-container grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-        <div>
+        <div class="motion-reveal" data-motion="reveal">
           <p class="mb-4 text-xs font-semibold uppercase tracking-[0.3em] opacity-70">Compañías y asistencia</p>
           <h2 class="font-display text-4xl font-black uppercase leading-none md:text-6xl">
             Coordinados con las principales aseguradoras.
           </h2>
         </div>
-        <div class="rounded-md bg-background p-6 text-foreground md:p-8">
+        <div class="motion-reveal rounded-md bg-background p-6 text-foreground md:p-8" data-motion="reveal" style="--motion-delay: 120ms">
           <p class="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Flota propia</p>
           <p class="mt-3 font-display text-2xl font-black uppercase leading-tight">
             Grúas todoterreno, plataformas, portavehículos y coches taller.

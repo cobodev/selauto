@@ -6,7 +6,7 @@ import { contact } from "../data/site";
 
 <section id="contacto" class="section-shell bg-accent-yellow text-accent-foreground">
   <div class="site-container grid gap-12 lg:grid-cols-2 lg:items-start">
-    <div>
+    <div class="motion-reveal" data-motion="reveal">
       <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] opacity-70">¿Una avería?</p>
       <h2 class="font-display text-5xl font-black uppercase leading-none md:text-7xl">
         Llámanos.<br />Estamos en camino.
@@ -34,6 +34,8 @@ import { contact } from "../data/site";
       </div>
     </div>
 
-    <LocationMap />
+    <div class="motion-reveal" data-motion="reveal" style="--motion-delay: 120ms">
+      <LocationMap />
+    </div>
   </div>
 </section>

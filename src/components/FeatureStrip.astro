@@ -11,7 +11,7 @@ const icons = [Clock, MapPin, ShieldCheck, Truck];
       features.map((feature, index) => {
         const Icon = icons[index];
         return (
-          <div class="flex items-center gap-3">
+          <div class="motion-reveal flex items-center gap-3" data-motion="reveal" style={`--motion-delay: ${index * 70}ms`}>
             <Icon class="size-5 text-accent-yellow" aria-hidden="true" />
             <span class="font-display text-sm font-semibold uppercase tracking-wider text-foreground">{feature.label}</span>
           </div>

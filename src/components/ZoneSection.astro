@@ -15,7 +15,7 @@ const contextIcons = [Mountain, Route, Building2];
     />
 
     <div class="mt-16 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
-      <article class="relative overflow-hidden rounded-md border border-accent-yellow/40 bg-card p-8 [background-image:linear-gradient(135deg,transparent_0%,transparent_58%,color-mix(in_oklab,var(--accent-yellow)_10%,transparent)_100%)] md:p-10">
+      <article class="motion-reveal relative overflow-hidden rounded-md border border-accent-yellow/40 bg-card p-8 [background-image:linear-gradient(135deg,transparent_0%,transparent_58%,color-mix(in_oklab,var(--accent-yellow)_10%,transparent)_100%)] md:p-10" data-motion="reveal">
         <div class="relative">
           <div class="inline-flex items-center gap-3 rounded-md bg-accent-yellow px-4 py-3 text-accent-foreground">
             <MapPinned class="size-5" aria-hidden="true" />
@@ -28,7 +28,7 @@ const contextIcons = [Mountain, Route, Building2];
         </div>
       </article>
 
-      <aside class="rounded-md border border-border bg-card p-8 md:p-10">
+      <aside class="motion-reveal rounded-md border border-border bg-card p-8 md:p-10" data-motion="reveal" style="--motion-delay: 100ms">
         <p class="font-display text-sm font-semibold uppercase tracking-[0.35em] text-accent-yellow">Localidades habituales</p>
         <div class="mt-8 flex flex-wrap gap-3">
           {coverageZones.places.map((place, index) => (

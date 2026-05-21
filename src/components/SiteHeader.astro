@@ -54,21 +54,22 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
 
 <div
   id="mobile-menu"
-  class="fixed inset-0 z-[60] hidden bg-background text-foreground md:hidden"
+  class="mobile-menu fixed inset-0 z-[60] hidden bg-background text-foreground md:hidden"
   data-mobile-menu
   aria-hidden="true"
 >
-  <div class="site-container flex min-h-screen flex-col justify-between pb-10 pt-28">
+  <div class="mobile-menu-panel site-container flex min-h-screen flex-col justify-between pb-10 pt-28">
     <nav class="grid gap-4" aria-label="Principal móvil">
       {
         navItems.map((item, index) => (
           <a
             class:list={[
-              "group rounded-md border p-5 transition hover:border-accent-yellow hover:bg-card",
+              "mobile-menu-item group rounded-md border p-5 transition hover:border-accent-yellow hover:bg-card",
               isActive(item.href) ? "border-accent-yellow bg-accent-yellow text-accent-foreground" : "border-border bg-card text-foreground"
             ]}
             href={item.href}
             aria-current={isActive(item.href) ? "page" : undefined}
+            style={`--mobile-menu-delay: ${index * 55}ms`}
           >
             <span
               class:list={[
@@ -84,7 +85,7 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
       }
     </nav>
 
-    <div class="mt-10 rounded-md border border-border bg-card p-5">
+    <div class="mobile-menu-item mt-10 rounded-md border border-border bg-card p-5" style={`--mobile-menu-delay: ${navItems.length * 55}ms`}>
       <p class="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Asistencia 24h</p>
       <div class="mt-5">
         <PhoneButton />
@@ -98,11 +99,34 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
   const toggle = document.querySelector("[data-mobile-menu-toggle]");
   const openIcon = document.querySelector("[data-menu-icon='open']");
   const closeIcon = document.querySelector("[data-menu-icon='close']");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let closeTimer: ReturnType<typeof window.setTimeout> | undefined;
 
   const setMenuState = (isOpen: boolean) => {
     if (!menu || !toggle || !openIcon || !closeIcon) return;
 
-    menu.classList.toggle("hidden", !isOpen);
+    if (closeTimer) {
+      window.clearTimeout(closeTimer);
+    }
+
+    if (isOpen) {
+      menu.classList.remove("hidden", "is-closing");
+      window.requestAnimationFrame(() => {
+        menu.classList.add("is-open");
+      });
+    } else {
+      menu.classList.remove("is-open");
+      menu.classList.add("is-closing");
+
+      closeTimer = window.setTimeout(
+        () => {
+          menu.classList.add("hidden");
+          menu.classList.remove("is-closing");
+        },
+        reduceMotion.matches ? 0 : 320
+      );
+    }
+
     menu.setAttribute("aria-hidden", String(!isOpen));
     toggle.setAttribute("aria-expanded", String(isOpen));
     toggle.setAttribute("aria-label", isOpen ? "Cerrar menú principal" : "Abrir menú principal");
