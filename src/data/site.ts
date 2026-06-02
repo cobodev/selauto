@@ -1,4 +1,4 @@
-import { serviceDetails } from "./services";
+import { homeServiceDetails } from "./services";
 
 export const phone = {
   label: "+34 600 123 456",
@@ -21,7 +21,7 @@ export const contact = {
 export const siteMetadata = {
   title: "Grúas Selauto | Grúa 24h en Cantabria",
   description:
-    "Grúas Selauto ofrece asistencia en carretera y grúa 24h en Cantabria. Servicio local y rápido."
+    "Grúas Selauto ofrece auxilio, asistencia en carretera y grúa 24h en Cantabria desde 1980."
 };
 
 export const navItems = [
@@ -33,18 +33,18 @@ export const navItems = [
 
 export const features = [
   { label: "24 / 7" },
-  { label: "Cobertura local" },
+  { label: "Desde 1980" },
   { label: "Seguros y compañías" },
   { label: "Flota propia" }
 ];
 
-export const services = serviceDetails.map(({ title, icon, description }) => ({ title, icon, description }));
+export const services = homeServiceDetails.map(({ title, icon, description, featured }) => ({ title, icon, description, featured }));
 
 export const stats = [
-  { value: "25+", label: "Años de experiencia" },
+  { value: "40+", label: "Años de experiencia" },
   { value: "24h", label: "Servicio continuo" },
   { value: "365", label: "Todos los días del año" },
-  { value: "5★", label: "Valoración media" }
+  { value: "1980", label: "Inicio de actividad" }
 ];
 
 export const coverageZones = {

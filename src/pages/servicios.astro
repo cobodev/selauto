@@ -9,7 +9,7 @@ import { serviceDetails } from "../data/services";
 
 const pageTitle = "Grúas Selauto | Servicios de grúa 24h y asistencia en carretera";
 const pageDescription =
-  "Servicios de grúa 24h, asistencia en carretera, rescate, baterías, pinchazos y traslado de vehículos en Cantabria.";
+  "Servicios de asistencia 24h, transporte de vehículos, rescates 4x4, baterías, ruedas, combustible, apertura de vehículos y transporte de motos en Cantabria.";
 
 const serviceStructuredData = {
   "@context": "https://schema.org",
@@ -47,11 +47,11 @@ const serviceStructuredData = {
       <div class="site-container">
         <SectionHeader
           eyebrow="Qué hacemos"
-          title="Soluciones para volver a moverte."
-          description="Desde una avería sencilla hasta un traslado coordinado, cada servicio está pensado para actuar con rapidez y mantenerte informado durante la asistencia."
+          title="Todo lo necesario para volver a moverte."
+          description="Desde una avería sencilla hasta un rescate 4x4 o un traslado coordinado, cada servicio está pensado para actuar con rapidez y mantenerte informado durante la asistencia."
         />
 
-        <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {
             serviceDetails.map((service, index) => (
               <ServiceDetailCard
@@ -60,6 +60,7 @@ const serviceStructuredData = {
                 detail={service.detail}
                 highlights={service.highlights}
                 icon={service.icon}
+                featured={service.featured}
                 motionDelay={index * 70}
               />
             ))

@@ -8,44 +8,44 @@ interface Pillar {
 
 export const aboutPillars: Pillar[] = [
   {
-    title: "Empresa local",
+    title: "Desde 1980",
     description:
-      "Conocemos de cerca las carreteras, accesos, pueblos y zonas de montaña en las que trabajamos cada día.",
-    icon: "map"
-  },
-  {
-    title: "Más de 25 años",
-    description:
-      "La experiencia en carretera nos ayuda a valorar cada aviso con rapidez y a coordinar la asistencia adecuada.",
+      "Más de 40 años de experiencia en auxilio y asistencia en carretera nos permiten actuar con criterio en cada aviso.",
     icon: "badge"
   },
   {
-    title: "Aseguradoras",
+    title: "Servicio 24/365",
     description:
-      "Trabajamos con las principales compañías de asistencia para dar una respuesta clara, ordenada y profesional.",
+      "Ofrecemos atención rápida, segura y profesional las 24 horas del día, todos los días del año.",
     icon: "shield"
   },
   {
-    title: "Flota preparada",
+    title: "Flota amplia",
     description:
-      "Contamos con grúas todoterreno, plataformas, portavehículos y coches taller para distintos tipos de incidencia.",
+      "Contamos con vehículos preparados para asistencia en carretera, transporte de vehículos y rescates.",
     icon: "truck"
+  },
+  {
+    title: "Trato cualificado",
+    description:
+      "Nuestro equipo adapta cada intervención a las necesidades del cliente para ofrecer soluciones eficaces y de confianza.",
+    icon: "map"
   }
 ];
 
 export const aboutTimeline = [
   {
-    label: "Origen local",
-    text: "Selauto nace como servicio cercano para conductores, talleres y compañías de asistencia en Cantabria."
+    label: "Trayectoria",
+    text: "Desde 1980, Grúas Selauto trabaja como empresa especializada en auxilio y asistencia en carretera."
   },
   {
-    label: "Respuesta en carretera",
-    text: "El trabajo diario combina urgencias, traslados programados, retirada de vehículos y apoyo técnico en ruta."
+    label: "Intervención",
+    text: "Coordinamos asistencia en carretera, transporte de vehículos y rescates con el recurso adecuado para cada situación."
   },
   {
-    label: "Servicio actual",
-    text: "Hoy mantenemos una flota propia y flexible, preparada para intervenir en valle, autovía, ciudad o accesos complicados."
+    label: "Compromiso",
+    text: "Garantizamos una atención eficaz y cercana, proporcionando soluciones inmediatas cuando más se necesitan."
   }
 ];
 
-export const aboutValues = ["Rapidez", "Trato directo", "Criterio local", "Flota propia", "Servicio 24h", "Coordinación con compañías"];
+export const aboutValues = ["Rapidez", "Seguridad", "Profesionalidad", "Flota propia", "Servicio 24h", "Confianza"];

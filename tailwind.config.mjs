@@ -23,7 +23,8 @@ export default {
         muted: color("secondary"),
         "muted-foreground": color("muted-foreground"),
         "accent-yellow": color("accent-yellow"),
-        "accent-foreground": color("accent-foreground")
+        "accent-foreground": color("accent-foreground"),
+        success: color("success")
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -31,8 +32,8 @@ export default {
         sm: "calc(var(--radius) - 4px)"
       },
       fontFamily: {
-        display: ["system-ui", "sans-serif"],
-        sans: ["system-ui", "sans-serif"]
+        display: ["var(--font-display)"],
+        sans: ["var(--font-sans)"]
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1rem" }],

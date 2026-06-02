@@ -1,6 +1,7 @@
 ---
 import SectionHeader from "./SectionHeader.astro";
 import ServiceCard from "./ServiceCard.astro";
+import OutlineButton from "./ui/OutlineButton.astro";
 import { services } from "../data/site";
 ---
 
@@ -8,11 +9,14 @@ import { services } from "../data/site";
   <div class="site-container">
     <SectionHeader
       eyebrow="Servicios"
-      title="Lo que hacemos, lo hacemos bien."
-      description="Más de 25 años dando servicio en carretera con flota propia y personal cualificado."
+      title="Asistencia para cada incidencia."
+      description="Los servicios más habituales de Grúas Selauto: respuesta urgente, transporte, rescate y ayuda en carretera con flota propia."
     />
-    <div class="mt-16 grid gap-6 md:grid-cols-3">
-      {services.map((service, index) => <ServiceCard title={service.title} description={service.description} icon={service.icon} motionDelay={index * 80} />)}
+    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {services.map((service, index) => <ServiceCard title={service.title} description={service.description} icon={service.icon} featured={service.featured} motionDelay={index * 80} />)}
+    </div>
+    <div class="mt-10">
+      <OutlineButton href="/servicios" label="Ver todos los servicios" />
     </div>
   </div>
 </section>

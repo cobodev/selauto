@@ -71,10 +71,13 @@ const directionsHref = `https://www.openstreetmap.org/directions?to=${contact.lo
           attribution: "&copy; OpenStreetMap"
         }).addTo(map);
 
+        const styles = getComputedStyle(document.documentElement);
+        const accentColor = styles.getPropertyValue("--accent-yellow").trim() || "#FFC107";
+
         window.L.circle([lat, lng], {
           radius,
-          color: "#facc15",
-          fillColor: "#facc15",
+          color: accentColor,
+          fillColor: accentColor,
           fillOpacity: 0.16,
           opacity: 0.8,
           weight: 2
@@ -105,7 +108,7 @@ const directionsHref = `https://www.openstreetmap.org/directions?to=${contact.lo
   .location-map .leaflet-container,
   .location-map.leaflet-container {
     background: var(--card);
-    font-family: system-ui, sans-serif;
+    font-family: var(--font-sans);
   }
 
   .location-map .leaflet-control-attribution {

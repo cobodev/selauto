@@ -1,12 +1,17 @@
 ---
-import { BatteryCharging, Clock, Disc3, Route, ShieldAlert, Truck, Wrench } from "lucide-astro";
+import { BatteryCharging, Bike, Clock, Disc3, Fuel, KeyRound, Mountain, PhoneCall, Route, ShieldAlert, Truck, Wrench } from "lucide-astro";
 
-const { title, description, icon = "truck", motionDelay = 0 } = Astro.props;
+const { title, description, icon = "truck", motionDelay = 0, featured = false } = Astro.props;
 
 const icons = {
   "battery-charging": BatteryCharging,
+  bike: Bike,
   clock: Clock,
   disc: Disc3,
+  fuel: Fuel,
+  "key-round": KeyRound,
+  mountain: Mountain,
+  "phone-call": PhoneCall,
   route: Route,
   "shield-alert": ShieldAlert,
   truck: Truck,
@@ -17,13 +22,16 @@ const Icon = icons[icon] ?? Truck;
 ---
 
 <article
-  class="service-card motion-reveal group relative border border-border bg-card p-8 rounded-md transition-colors hover:border-accent-yellow"
+  class:list={[
+    "service-card motion-reveal group relative rounded-md border border-border bg-card p-8 transition-colors hover:border-accent-yellow",
+    featured && "md:col-span-2"
+  ]}
   data-motion="reveal"
   style={`--motion-delay: ${motionDelay}ms`}
 >
   <div class="service-card-icon mb-12 inline-flex size-16 items-center justify-center rounded-md bg-accent-yellow text-accent-foreground">
     <Icon class="size-7" aria-hidden="true" />
   </div>
-  <h3 class="font-display text-3xl font-black uppercase text-foreground">{title}</h3>
-  <p class="mt-4 leading-relaxed text-muted-foreground">{description}</p>
+  <h3 class:list={["font-display font-black uppercase leading-tight text-foreground", featured ? "text-4xl md:text-5xl" : "text-3xl"]}>{title}</h3>
+  <p class:list={["mt-4 leading-relaxed text-muted-foreground", featured && "max-w-xl text-lg"]}>{description}</p>
 </article>
