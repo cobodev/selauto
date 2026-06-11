@@ -24,10 +24,12 @@ const aboutStructuredData = {
   "@type": "LocalBusiness",
   name: "Grúas Selauto",
   description: pageDescription,
-  telephone: contact.phone.label,
+  telephone: contact.phones.map((item) => item.label),
   address: {
     "@type": "PostalAddress",
     streetAddress: contact.address,
+    addressLocality: "Santa María de Cayón",
+    postalCode: "39626",
     addressRegion: "Cantabria",
     addressCountry: "ES"
   },

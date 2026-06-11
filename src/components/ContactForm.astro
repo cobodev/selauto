@@ -1,5 +1,5 @@
 ---
-import { phone } from "../data/site";
+import { contact, phone } from "../data/site";
 
 const inputClass =
   "w-full rounded-md border border-foreground/10 bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground transition focus:border-foreground focus:outline-none";
@@ -43,6 +43,8 @@ const inputClass =
 
   <p class="text-center text-xs text-muted-foreground">
     ¿Es una emergencia? Llámanos al
-    <a href={phone.href} class="font-bold text-foreground underline">{phone.label}</a>.
+    <a href={phone.href} class="font-bold text-foreground underline">{phone.label}</a>
+    o al
+    <a href={contact.phones[1].href} class="font-bold text-foreground underline">{contact.phones[1].label}</a>.
   </p>
 </form>

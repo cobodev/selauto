@@ -15,12 +15,12 @@ const contactStructuredData = {
   "@type": "AutoRepair",
   name: "Grúas Selauto",
   description: pageDescription,
-  telephone: contact.phone.label,
+  telephone: contact.phones.map((item) => item.label),
   address: {
     "@type": "PostalAddress",
     streetAddress: contact.address,
-    addressLocality: "La Penilla De Cayón",
-    postalCode: "39650",
+    addressLocality: "Santa María de Cayón",
+    postalCode: "39626",
     addressRegion: "Cantabria",
     addressCountry: "ES"
   },
@@ -50,20 +50,28 @@ const contactStructuredData = {
             Estamos disponibles 24h.
           </h1>
           <p class="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Contacta con nosotros o localiza nuestra base en La Penilla de Cayón. El mapa muestra un pin de ubicación y una zona de cobertura orientativa.
+            Contacta con nosotros o localiza nuestra base en Santa María de Cayón. El mapa muestra un pin de ubicación y una zona de cobertura orientativa.
           </p>
 
           <div class="mt-8 space-y-5">
-            <a
-              href={contact.phone.href}
-              class="motion-shine flex items-center gap-4 rounded-md border border-border bg-card px-6 py-5 transition hover:border-accent-yellow"
-            >
+            <div class="motion-shine flex items-start gap-4 rounded-md border border-border bg-card px-6 py-5">
               <Phone class="size-7 text-accent-yellow" aria-hidden="true" />
-              <div>
-                <div class="text-xs uppercase tracking-widest text-muted-foreground">Teléfono 24h</div>
-                <div class="font-display text-2xl font-bold">{contact.phone.label}</div>
+              <div class="min-w-0">
+                <div class="text-xs uppercase tracking-widest text-muted-foreground">Teléfonos 24h</div>
+                <div class="mt-3 grid gap-3">
+                  {
+                    contact.phones.map((item) => (
+                      <a href={item.href} class="group block transition hover:text-accent-yellow">
+                        <span class="block text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground group-hover:text-accent-yellow">
+                          {item.shortLabel}
+                        </span>
+                        <span class="font-display text-2xl font-bold">{item.label}</span>
+                      </a>
+                    ))
+                  }
+                </div>
               </div>
-            </a>
+            </div>
 
             <div class="flex items-start gap-4 rounded-md border border-border bg-card px-6 py-5">
               <MapPin class="mt-1 size-6 text-accent-yellow" aria-hidden="true" />

@@ -2,8 +2,8 @@ import { contact } from "./site";
 
 export const contactChannels = [
   {
-    label: "Teléfono 24h",
-    title: contact.phone.label,
+    label: "Teléfonos 24h",
+    title: contact.phones.map((item) => item.label).join(" / "),
     description: "La vía más rápida para averías, retirada o asistencia urgente.",
     href: contact.phone.href,
     icon: "phone"

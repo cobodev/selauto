@@ -1,19 +1,30 @@
 import { homeServiceDetails } from "./services";
 
-export const phone = {
-  label: "+34 600 123 456",
-  href: "tel:+34600123456"
+export const phones = {
+  primary: {
+    label: "+34 608 300 772",
+    href: "tel:+34608300772",
+    shortLabel: "Principal"
+  },
+  secondary: {
+    label: "+34 648 488 280",
+    href: "tel:+34648488280",
+    shortLabel: "Secundario"
+  }
 };
+
+export const phone = phones.primary;
 
 export const contact = {
   phone,
-  address: "Autovía A8, salida 214, nave 1, 39650 La Penilla De Cayón, Cantabria",
+  phones: [phones.primary, phones.secondary],
+  address: "Barrio Las Huertas 173, Santa María de Cayón, Cantabria, 39626",
   area: "Valles Pasiegos y Cantabria",
   hours: "Atención 24 horas, todos los días",
   response: "Asistencia urgente y avisos programados",
   location: {
-    lat: 43.313765,
-    lng: -3.878979
+    lat: 43.3101535,
+    lng: -3.8859045
   },
   coverageRadiusKm: 35
 };
